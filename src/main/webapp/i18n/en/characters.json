@@ -1,0 +1,22 @@
+
+{
+    "blogApp": {
+        "characters" : {
+            "home": {
+                "title": "Characters",
+                "createLabel": "Create a new Characters",
+                "createOrEditLabel": "Create or edit a Characters"
+            },
+            "created": "A new Characters is created with identifier {{ param }}",
+            "updated": "A Characters is updated with identifier {{ param }}",
+            "deleted": "A Characters is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Characters {{ id }}?"
+            },
+            "detail": {
+                "title": "Characters"
+            },
+            "name": "Name"
+        }
+    }
+}

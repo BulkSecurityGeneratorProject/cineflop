@@ -1,0 +1,23 @@
+
+{
+    "blogApp": {
+        "scripts" : {
+            "home": {
+                "title": "Scripts",
+                "createLabel": "Create a new Scripts",
+                "createOrEditLabel": "Create or edit a Scripts"
+            },
+            "created": "A new Scripts is created with identifier {{ param }}",
+            "updated": "A Scripts is updated with identifier {{ param }}",
+            "deleted": "A Scripts is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Scripts {{ id }}?"
+            },
+            "detail": {
+                "title": "Scripts"
+            },
+            "title": "Title",
+            "ideas": "Ideas"
+        }
+    }
+}

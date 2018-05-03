@@ -1,0 +1,53 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "keywords",
+            "otherEntityName": "keywords",
+            "otherEntityRelationshipName": "ideas"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "roles",
+            "otherEntityName": "roles",
+            "otherEntityRelationshipName": "ideas"
+        },
+        {
+            "relationshipName": "scripts",
+            "otherEntityName": "scripts",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "title",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "synopsis",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "context",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "imagepath",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "gender",
+            "fieldType": "Genders",
+            "fieldValues": "COMEDY,LOVE,FANTASTIC,THRILLER,OPERA,HORROR,ACTION"
+        }
+    ],
+    "changelogDate": "20180503141326",
+    "entityTableName": "ideas",
+    "dto": "mapstruct",
+    "pagination": "infinite-scroll",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "angularJSSuffix": "mySuffix"
+}

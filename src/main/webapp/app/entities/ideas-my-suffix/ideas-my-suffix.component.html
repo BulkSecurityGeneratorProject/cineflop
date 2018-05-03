@@ -1,0 +1,72 @@
+<div>
+    <h2>
+        <span jhiTranslate="blogApp.ideas.home.title">Ideas</span>
+        <button class="btn btn-primary float-right jh-create-entity create-ideas-my-suffix" [routerLink]="['/', { outlets: { popup: ['ideas-my-suffix-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="blogApp.ideas.home.createLabel">
+            Create new Ideas
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="ideas">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="reset.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="title"><span jhiTranslate="blogApp.ideas.title">Title</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="synopsis"><span jhiTranslate="blogApp.ideas.synopsis">Synopsis</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="context"><span jhiTranslate="blogApp.ideas.context">Context</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="imagepath"><span jhiTranslate="blogApp.ideas.imagepath">Imagepath</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="gender"><span jhiTranslate="blogApp.ideas.gender">Gender</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="scriptsId"><span jhiTranslate="blogApp.ideas.scripts">Scripts</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+            <tr *ngFor="let ideas of ideas ;trackBy: trackId">
+                <td><a [routerLink]="['../ideas-my-suffix', ideas.id ]">{{ideas.id}}</a></td>
+                <td>{{ideas.title}}</td>
+                <td>{{ideas.synopsis}}</td>
+                <td>{{ideas.context}}</td>
+                <td>{{ideas.imagepath}}</td>
+                <td jhiTranslate="{{'blogApp.Genders.' + ideas.gender}}">{{ideas.gender}}</td>
+                <td>
+                    <div *ngIf="ideas.scriptsId">
+                        <a [routerLink]="['../scripts-my-suffix', ideas.scriptsId  ]" >{{ideas.scriptsId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../ideas-my-suffix', ideas.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'ideas-my-suffix/'+ ideas.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'ideas-my-suffix/'+ ideas.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

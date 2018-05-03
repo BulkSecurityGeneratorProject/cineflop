@@ -1,0 +1,29 @@
+
+{
+    "blogApp": {
+        "ideas" : {
+            "home": {
+                "title": "Ideas",
+                "createLabel": "Create a new Ideas",
+                "createOrEditLabel": "Create or edit a Ideas"
+            },
+            "created": "A new Ideas is created with identifier {{ param }}",
+            "updated": "A Ideas is updated with identifier {{ param }}",
+            "deleted": "A Ideas is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Ideas {{ id }}?"
+            },
+            "detail": {
+                "title": "Ideas"
+            },
+            "title": "Title",
+            "synopsis": "Synopsis",
+            "context": "Context",
+            "imagepath": "Imagepath",
+            "gender": "Gender",
+            "keywords": "Keywords",
+            "roles": "Roles",
+            "scripts": "Scripts"
+        }
+    }
+}

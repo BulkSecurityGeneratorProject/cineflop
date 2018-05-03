@@ -1,0 +1,48 @@
+
+<div *ngIf="ideas">
+    <h2><span jhiTranslate="blogApp.ideas.detail.title">Ideas</span> {{ideas.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="blogApp.ideas.title">Title</span></dt>
+        <dd>
+            <span>{{ideas.title}}</span>
+        </dd>
+        <dt><span jhiTranslate="blogApp.ideas.synopsis">Synopsis</span></dt>
+        <dd>
+            <span>{{ideas.synopsis}}</span>
+        </dd>
+        <dt><span jhiTranslate="blogApp.ideas.context">Context</span></dt>
+        <dd>
+            <span>{{ideas.context}}</span>
+        </dd>
+        <dt><span jhiTranslate="blogApp.ideas.imagepath">Imagepath</span></dt>
+        <dd>
+            <span>{{ideas.imagepath}}</span>
+        </dd>
+        <dt><span jhiTranslate="blogApp.ideas.gender">Gender</span></dt>
+        <dd>
+            <span jhiTranslate="{{'blogApp.Genders.' + ideas.gender}}">{{ideas.gender}}</span>
+        </dd>
+        <dt><span jhiTranslate="blogApp.ideas.scripts">Scripts</span></dt>
+        <dd>
+            <div *ngIf="ideas.scriptsId">
+                <a [routerLink]="['/scripts-my-suffix', ideas.scriptsId]">{{ideas.scriptsId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'ideas-my-suffix/'+ ideas.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

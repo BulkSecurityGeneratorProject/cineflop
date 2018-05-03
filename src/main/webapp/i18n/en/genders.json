@@ -1,0 +1,14 @@
+{
+    "blogApp": {
+        "Genders" : {
+            "null": "",
+            "COMEDY": "COMEDY",
+            "LOVE": "LOVE",
+            "FANTASTIC": "FANTASTIC",
+            "THRILLER": "THRILLER",
+            "OPERA": "OPERA",
+            "HORROR": "HORROR",
+            "ACTION": "ACTION"
+        }
+    }
+}

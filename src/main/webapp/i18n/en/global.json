@@ -7,6 +7,11 @@
             "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
             "entities": {
                 "main": "Entities",
+                "ideasMySuffix": "Ideas",
+                "rolesMySuffix": "Roles",
+                "keywordsMySuffix": "Keywords",
+                "scriptsMySuffix": "Scripts",
+                "charactersMySuffix": "Characters",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

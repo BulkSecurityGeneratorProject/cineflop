@@ -68,7 +68,7 @@ class IdeasGatlingTest extends Simulation {
             .exec(http("Create new ideas")
             .post("/api/ideas")
             .headers(headers_http_authenticated)
-            .body(StringBody("""{"id":null, "title":"SAMPLE_TEXT", "synopsis":"SAMPLE_TEXT", "context":"SAMPLE_TEXT", "imagepath":"SAMPLE_TEXT", "gender":null}""")).asJSON
+            .body(StringBody("""{"id":null, "title":"SAMPLE_TEXT", "synopsis":null, "context":"SAMPLE_TEXT", "imagepath":"SAMPLE_TEXT", "gender":null}""")).asJSON
             .check(status.is(201))
             .check(headerRegex("Location", "(.*)").saveAs("new_ideas_url"))).exitHereIfFailed
             .pause(10)

@@ -27,6 +27,7 @@ public class Ideas implements Serializable {
     @Column(name = "title")
     private String title;
 
+    @Lob
     @Column(name = "synopsis")
     private String synopsis;
 

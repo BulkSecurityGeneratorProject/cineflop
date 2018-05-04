@@ -14,7 +14,7 @@ export class IdeasMySuffix implements BaseEntity {
     constructor(
         public id?: number,
         public title?: string,
-        public synopsis?: string,
+        public synopsis?: any,
         public context?: string,
         public imagepath?: string,
         public gender?: Genders,

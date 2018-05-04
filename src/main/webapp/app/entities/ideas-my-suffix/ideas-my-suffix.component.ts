@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { Subscription } from 'rxjs/Subscription';
-import { JhiEventManager, JhiParseLinks, JhiAlertService } from 'ng-jhipster';
+import { JhiEventManager, JhiParseLinks, JhiAlertService, JhiDataUtils } from 'ng-jhipster';
 
 import { IdeasMySuffix } from './ideas-my-suffix.model';
 import { IdeasMySuffixService } from './ideas-my-suffix.service';
@@ -27,6 +27,7 @@ export class IdeasMySuffixComponent implements OnInit, OnDestroy {
     constructor(
         private ideasService: IdeasMySuffixService,
         private jhiAlertService: JhiAlertService,
+        private dataUtils: JhiDataUtils,
         private eventManager: JhiEventManager,
         private parseLinks: JhiParseLinks,
         private principal: Principal
@@ -76,6 +77,14 @@ export class IdeasMySuffixComponent implements OnInit, OnDestroy {
 
     trackId(index: number, item: IdeasMySuffix) {
         return item.id;
+    }
+
+    byteSize(field) {
+        return this.dataUtils.byteSize(field);
+    }
+
+    openFile(contentType, field) {
+        return this.dataUtils.openFile(contentType, field);
     }
     registerChangeInIdeas() {
         this.eventSubscriber = this.eventManager.subscribe('ideasListModification', (response) => this.reset());

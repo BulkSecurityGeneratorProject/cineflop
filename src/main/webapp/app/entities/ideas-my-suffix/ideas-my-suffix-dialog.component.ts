@@ -1,10 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import {HttpResponse, HttpErrorResponse, HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpResponse, HttpErrorResponse, HttpHeaders, HttpClient} from '@angular/common/http';
 
 import { Observable } from 'rxjs/Observable';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
+import { JhiEventManager, JhiAlertService, JhiDataUtils } from 'ng-jhipster';
 
 import { IdeasMySuffix } from './ideas-my-suffix.model';
 import { IdeasMySuffixPopupService } from './ideas-my-suffix-popup.service';
@@ -23,16 +23,19 @@ export class IdeasMySuffixDialogComponent implements OnInit {
 
     ideas: IdeasMySuffix;
     isSaving: boolean;
+    markovRow: number = 1;
+    markovUse = false;
 
     scripts: ScriptsMySuffix[];
 
     constructor(
         public activeModal: NgbActiveModal,
+        private dataUtils: JhiDataUtils,
         private jhiAlertService: JhiAlertService,
         private ideasService: IdeasMySuffixService,
         private scriptsService: ScriptsMySuffixService,
         private eventManager: JhiEventManager,
-        private http: HttpClient
+        private  http: HttpClient
     ) {
     }
 
@@ -42,12 +45,27 @@ export class IdeasMySuffixDialogComponent implements OnInit {
             .subscribe((res: HttpResponse<ScriptsMySuffix[]>) => { this.scripts = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
     }
 
+    byteSize(field) {
+        return this.dataUtils.byteSize(field);
+    }
+
+    openFile(contentType, field) {
+        return this.dataUtils.openFile(contentType, field);
+    }
+
+    setFileData(event, entity, field, isImage) {
+        this.dataUtils.setFileData(event, entity, field, isImage);
+    }
+
     clear() {
         this.activeModal.dismiss('cancel');
     }
 
     save() {
         this.isSaving = true;
+        if ( this.markovUse) {
+            this.sendNewMarkovRow();
+        }
         if (this.ideas.id !== undefined) {
             this.subscribeToSaveResponse(
                 this.ideasService.update(this.ideas));
@@ -85,12 +103,17 @@ export class IdeasMySuffixDialogComponent implements OnInit {
 
         if (this.ideas.synopsis === undefined){
             this.ideas.synopsis = "";
+            this.markovUse = true;
         }
 
-        let $obs = this.http.get<{data: string}>('http://localhost:3000/markov/');
-            $obs.subscribe(data => component.ideas.synopsis += data.data );
+        let $obs = this.http.get<{data: string}>('http://localhost:3000/markov/'+component.markovRow);
+        $obs.subscribe(data => component.ideas.synopsis += data.data );
         // this.ideas.synopsis += data;
         // console.log(markov.data);
+    }
+
+    sendNewMarkovRow() {
+        this.http.post('http://localhost:3000/markov/sentences', { "data" : this.ideas.synopsis }, httpOptions);
     }
 }
 
@@ -122,6 +145,4 @@ export class IdeasMySuffixPopupComponent implements OnInit, OnDestroy {
     ngOnDestroy() {
         this.routeSub.unsubscribe();
     }
-
-
 }

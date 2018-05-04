@@ -5,6 +5,7 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.Objects;
+import javax.persistence.Lob;
 import org.jhipster.domain.enumeration.Genders;
 
 /**
@@ -16,9 +17,11 @@ public class IdeasDTO implements Serializable {
 
     private String title;
 
+    @Lob
     private String synopsis;
 
     private String context;
+
     private String imagepath;
 
     private Genders gender;

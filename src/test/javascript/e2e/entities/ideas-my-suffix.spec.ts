@@ -70,7 +70,7 @@ export class IdeasDialogPage {
     saveButton = element(by.css('.modal-footer .btn.btn-primary'));
     closeButton = element(by.css('button.close'));
     titleInput = element(by.css('input#field_title'));
-    synopsisInput = element(by.css('input#field_synopsis'));
+    synopsisInput = element(by.css('textarea#field_synopsis'));
     contextInput = element(by.css('input#field_context'));
     imagepathInput = element(by.css('input#field_imagepath'));
     genderSelect = element(by.css('select#field_gender'));

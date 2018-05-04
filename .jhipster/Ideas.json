@@ -27,7 +27,8 @@
         },
         {
             "fieldName": "synopsis",
-            "fieldType": "String"
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text"
         },
         {
             "fieldName": "context",

@@ -218,7 +218,9 @@ ui bootstrap tweaks
  }
 
 /* jhipster-needle-scss-add-main JHipster will add new css style */
-
+body, h1, h2, h3, h4 {
+    font-family: map-get($theme, typo-font);
+}
 .footer {
     position: absolute;
     bottom: 0;
@@ -231,3 +233,4 @@ ui bootstrap tweaks
     width: 100%;
     margin-left: -15px;
 }
+

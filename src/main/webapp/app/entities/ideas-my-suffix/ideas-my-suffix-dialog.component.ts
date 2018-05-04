@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
+import {HttpResponse, HttpErrorResponse, HttpClient, HttpHeaders} from '@angular/common/http';
 
 import { Observable } from 'rxjs/Observable';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
@@ -10,6 +10,10 @@ import { IdeasMySuffix } from './ideas-my-suffix.model';
 import { IdeasMySuffixPopupService } from './ideas-my-suffix-popup.service';
 import { IdeasMySuffixService } from './ideas-my-suffix.service';
 import { ScriptsMySuffix, ScriptsMySuffixService } from '../scripts-my-suffix';
+
+const httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
 
 @Component({
     selector: 'jhi-ideas-my-suffix-dialog',
@@ -27,7 +31,8 @@ export class IdeasMySuffixDialogComponent implements OnInit {
         private jhiAlertService: JhiAlertService,
         private ideasService: IdeasMySuffixService,
         private scriptsService: ScriptsMySuffixService,
-        private eventManager: JhiEventManager
+        private eventManager: JhiEventManager,
+        private http: HttpClient
     ) {
     }
 
@@ -74,6 +79,19 @@ export class IdeasMySuffixDialogComponent implements OnInit {
     trackScriptsById(index: number, item: ScriptsMySuffix) {
         return item.id;
     }
+
+    markovGetButton() : void {
+        let component = this;
+
+        if (this.ideas.synopsis === undefined){
+            this.ideas.synopsis = "";
+        }
+
+        let $obs = this.http.get<{data: string}>('http://localhost:3000/markov/');
+            $obs.subscribe(data => component.ideas.synopsis += data.data );
+        // this.ideas.synopsis += data;
+        // console.log(markov.data);
+    }
 }
 
 @Component({
@@ -104,4 +122,6 @@ export class IdeasMySuffixPopupComponent implements OnInit, OnDestroy {
     ngOnDestroy() {
         this.routeSub.unsubscribe();
     }
+
+
 }

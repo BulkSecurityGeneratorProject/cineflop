@@ -19,7 +19,6 @@ public class IdeasDTO implements Serializable {
     private String synopsis;
 
     private String context;
-
     private String imagepath;
 
     private Genders gender;

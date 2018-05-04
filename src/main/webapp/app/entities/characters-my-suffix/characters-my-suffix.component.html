@@ -12,47 +12,34 @@
     <div class="row">
     </div>
     <br/>
-    <div class="table-responsive" *ngIf="characters">
-        <table class="table table-striped">
-            <thead>
-            <tr>
-            <th><span jhiTranslate="global.field.id">ID</span></th>
-            <th><span jhiTranslate="blogApp.characters.name">Name</span></th>
-            <th></th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr *ngFor="let characters of characters ;trackBy: trackId">
-                <td><a [routerLink]="['../characters-my-suffix', characters.id ]">{{characters.id}}</a></td>
-                <td>{{characters.name}}</td>
-                <td class="text-right">
-                    <div class="btn-group flex-btn-group-container">
-                        <button type="submit"
-                                [routerLink]="['../characters-my-suffix', characters.id ]"
-                                class="btn btn-info btn-sm">
-                            <span class="fa fa-eye"></span>
-                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
-                        </button>
-                        <button type="submit"
-                                [routerLink]="['/', { outlets: { popup: 'characters-my-suffix/'+ characters.id + '/edit'} }]"
-                                replaceUrl="true"
-                                queryParamsHandling="merge"
-                                class="btn btn-primary btn-sm">
-                            <span class="fa fa-pencil"></span>
-                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
-                        </button>
-                        <button type="submit"
-                                [routerLink]="['/', { outlets: { popup: 'characters-my-suffix/'+ characters.id + '/delete'} }]"
-                                replaceUrl="true"
-                                queryParamsHandling="merge"
-                                class="btn btn-danger btn-sm">
-                            <span class="fa fa-remove"></span>
-                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
-                        </button>
-                    </div>
-                </td>
-            </tr>
-            </tbody>
-        </table>
+    <div *ngFor="let characters of characters ;trackBy: trackId">
+        <td><a [routerLink]="['../characters-my-suffix', characters.id ]">{{characters.id}}</a></td>
+        <td>{{characters.name}}</td>
+        <td class="text-right">
+            <div class="btn-group flex-btn-group-container">
+                <button type="submit"
+                        [routerLink]="['../characters-my-suffix', characters.id ]"
+                        class="btn btn-info btn-sm">
+                    <span class="fa fa-eye"></span>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                </button>
+                <button type="submit"
+                        [routerLink]="['/', { outlets: { popup: 'characters-my-suffix/'+ characters.id + '/edit'} }]"
+                        replaceUrl="true"
+                        queryParamsHandling="merge"
+                        class="btn btn-primary btn-sm">
+                    <span class="fa fa-pencil"></span>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                </button>
+                <button type="submit"
+                        [routerLink]="['/', { outlets: { popup: 'characters-my-suffix/'+ characters.id + '/delete'} }]"
+                        replaceUrl="true"
+                        queryParamsHandling="merge"
+                        class="btn btn-danger btn-sm">
+                    <span class="fa fa-remove"></span>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                </button>
+            </div>
+        </td>
     </div>
 </div>

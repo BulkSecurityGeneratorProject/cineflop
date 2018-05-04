@@ -4,8 +4,7 @@
             <i class="fa fa-bars"></i>
         </a>
         <a class="navbar-brand logo float-left" routerLink="/" (click)="collapseNavbar()">
-            <span class="logo-img"></span>
-            <span jhiTranslate="global.title" class="navbar-title">Blog</span> <span class="navbar-version">{{version}}</span>
+            <span class="navbar-title">FaitonCiné</span>
         </a>
     </div>
     <div class="navbar-collapse collapse" id="navbarResponsive" [ngbCollapse]="isNavbarCollapsed" [ngSwitch]="isAuthenticated()">
@@ -18,50 +17,41 @@
                     </span>
                 </a>
             </li>
+
             <!-- jhipster-needle-add-element-to-menu - JHipster will add new menu items here -->
-            <li *ngSwitchCase="true" ngbDropdown class="nav-item dropdown pointer" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-                <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="entity-menu">
-                    <span>
-                        <i class="fa fa-th-list" aria-hidden="true"></i>
-                        <span jhiTranslate="global.menu.entities.main">
-                            Entities
-                        </span>
-                    </span>
+            <!-- <li *ngSwitchCase="true" ngbDropdown class="nav-item dropdown pointer" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"> -->
+            <li>
+                <a class="nav-link" routerLink="ideas-my-suffix" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                    <i class="fa fa-fw" aria-hidden="true"></i>
+                    <span jhiTranslate="global.menu.entities.ideasMySuffix">Ideas My Suffix</span>
                 </a>
-                <ul class="dropdown-menu" ngbDropdownMenu>
-                    <li>
-                        <a class="dropdown-item" routerLink="ideas-my-suffix" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
-                            <i class="fa fa-fw fa-asterisk" aria-hidden="true"></i>
-                            <span jhiTranslate="global.menu.entities.ideasMySuffix">Ideas My Suffix</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" routerLink="roles-my-suffix" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
-                            <i class="fa fa-fw fa-asterisk" aria-hidden="true"></i>
-                            <span jhiTranslate="global.menu.entities.rolesMySuffix">Roles My Suffix</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" routerLink="keywords-my-suffix" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
-                            <i class="fa fa-fw fa-asterisk" aria-hidden="true"></i>
-                            <span jhiTranslate="global.menu.entities.keywordsMySuffix">Keywords My Suffix</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" routerLink="scripts-my-suffix" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
-                            <i class="fa fa-fw fa-asterisk" aria-hidden="true"></i>
-                            <span jhiTranslate="global.menu.entities.scriptsMySuffix">Scripts My Suffix</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" routerLink="characters-my-suffix" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
-                            <i class="fa fa-fw fa-asterisk" aria-hidden="true"></i>
-                            <span jhiTranslate="global.menu.entities.charactersMySuffix">Characters My Suffix</span>
-                        </a>
-                    </li>
-                    <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
-                </ul>
             </li>
+            <li>
+                <a class="nav-link" routerLink="roles-my-suffix" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                    <i class="fa fa-fw" aria-hidden="true"></i>
+                    <span jhiTranslate="global.menu.entities.rolesMySuffix">Roles My Suffix</span>
+                </a>
+            </li>
+            <li>
+                <a class="nav-link" routerLink="keywords-my-suffix" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                    <i class="fa fa-fw" aria-hidden="true"></i>
+                    <span jhiTranslate="global.menu.entities.keywordsMySuffix">Keywords My Suffix</span>
+                </a>
+            </li>
+            <li>
+                <a class="nav-link" routerLink="scripts-my-suffix" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                    <i class="fa fa-fw" aria-hidden="true"></i>
+                    <span jhiTranslate="global.menu.entities.scriptsMySuffix">Scripts My Suffix</span>
+                </a>
+            </li>
+            <li>
+                <a class="nav-link" routerLink="characters-my-suffix" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                    <i class="fa fa-fw" aria-hidden="true"></i>
+                    <span jhiTranslate="global.menu.entities.charactersMySuffix">Characters My Suffix</span>
+                </a>
+            </li>
+                    <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
+
             <li *jhiHasAnyAuthority="'ROLE_ADMIN'" ngbDropdown class="nav-item dropdown pointer" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
                 <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="admin-menu">
                     <span>
